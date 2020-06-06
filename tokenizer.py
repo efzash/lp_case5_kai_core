@@ -1,3 +1,27 @@
+import random
+import codecs
+import re
+
+f = codecs.open("SBERDATA/SBERBANK/bad.csv", 'r', "utf_8_sig")
+
+elementaddr = []
+for line in f:
+    elementaddr.append(line.strip("\n"))
+    break
+print(elementaddr)
+
+fw = open("BADCLEAR.txt", 'w')
+
+for line in f:
+    s = line.strip("\n").split(';')[1]
+    s = re.sub(r"[')№\\(,.`<>«»~!@#$%;}{^&*?\"|+=_:]",' ', str(s))
+    s = s.lower()
+    s = s.split()
+    s = ' '.join(s)
+    fw.write(s +"\n")
+fw.close()
+f.close()
+
 import natasha as nat
 from yargy.tagger import PassTagger
 from natasha.tokenizer import TOKENIZER as tokenizer
