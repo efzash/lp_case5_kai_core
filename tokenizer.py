@@ -27,31 +27,21 @@ from yargy.tagger import PassTagger
 from natasha.tokenizer import TOKENIZER as tokenizer
 tag = PassTagger()
 import time
-#tokens_list=[]
+
 s = time.time()
 
-def Poch_ind(token):
-    pass
-def Country(token):
-    return(True,index)
-    
-def Subject(token):
-    pass
-def City(token):
-    pass
-def Selo(token):
-    pass
-def Rn_type(token):
-    pass
-def Rn_name(token):
-    pass
-def Street_type(token):
-    pass
-def Street(token):
-    pass
 
 def Tabl_value(token, table):
-    return(True,index)
+    f = open(table + ".txt", 'r')
+    index = -1
+    for line in f:
+        index += 1
+        chslov = line.strip("\n").split(' ')
+        for i in chslov:
+            if token == i:
+                return(True, index, len(chslov))
+    
+    return(False, None, None)
     
 
 #for i in range(len(bad)):
@@ -66,48 +56,36 @@ for i in range(3484):
     mas = []#список списков тегов - список принадлежностей токена к опр категории (таблице фиас)
     mas_nums = []#список списков индексов в каждом теге - попробуем склеивать слова с одинаковыми тегами по этим индексам
     
+    table = [t1,t2,t3,t4,t5,t6,t7,t8,t9]#таблицы названий фиас
+    
     for token in temp_m:
         t_vector = [20] * n
+        t_vector_i = [20] * n
         
         if token.type == 'INT' and len(token.value)==6:
             t_vector[0] = 1
             mas.append([0])
             Poch_ind(token.value)#обработка почтового индекса
         
-        if token.type == 'RU':
-            
-            country(token.value)
-            
-            """
-            t_vector[1].append(country(token.value))
-            t_vector[1].append(subject(token.value))
-            t_vector[1].append( city(token.value))
-            t_vector[1].append(selo(token.value))
-            t_vector[1].append( rn_type(token.value))
-            t_vector[1].append( rn_name(token.value))
-            t_vector[1].append( street_type(token.value))
-            t_vector[1].append( street(token.value))
-            """
-            
-            for elem in t_vector:
-                if elem == 1:
-            mas1
-            
-            mas.append(mas1)
+        #if token.type == 'RU':
         
-        for mas in 
-            #обл/респ/ано
-            #город
-            #гск?
-            #поселок/деревня
-            #улица
-            #территория
-            #СНТ
-            #ПЕР
-            #
-            
-            
+        for i, table in enumerate(tables): 
+            t_vector[i],t_vector_i[i] = Tabl_value(token, table)
+
+        t_mas = []
+        t_mas_i = []
+        for i, elem in enumerate(t_vector):
+            if elem == True:
+                t_mas.append(i)
+                t_mas_i.append(t_vector_i[i])
+
+        mas.append(t_mas)
+        mas_nums.append(t_mas_i)
+    
+    for elem in mas:
+        if 
         
-    #tokens_list.append(temp_m)
+            
+
 
 print(time.time()-s)
