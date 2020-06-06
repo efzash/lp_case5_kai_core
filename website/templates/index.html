@@ -5,21 +5,57 @@
     <title>Hackaton</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
-<body>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background-color: #220f31;
+        }
 
-<div class="container">
-    <h1>Kazan Artificial Intelligence core</h1>
-    <div class="form-group">
-         <form class="form-inline" id="upload-form" action="{{ url_for('csv_upload') }}" method="POST"
-          enctype="multipart/form-data">
-        <div class="form-group">
-            <input class="input-group" id="file-picker" type="file" name="file" multiple accept=".csv">
-            <input class="input-group-btn" type="submit" value="Загрузить!" id="upload-button">
-        </div>
-    </form>
-    </div>
+        form {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="text-center">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <h1 class="masthead-brand">Kazan AI core</h1>
+    </header>
+
+    <p>Выберите csv файл для обработки!</p>
+
+        <form class="" id="upload-form" action="{{ url_for('csv_upload') }}" method="POST"
+              enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="" id="file-picker"  type="file" name="file" multiple accept=".csv">
+                <input class="" type="submit" value="Загрузить!" id="upload-button">
+            </div>
+        </form>
+        <div id="msg"></div>
 
 </div>
 </body>
+<script>
+
+    $("#file-picker").change(function () {
+
+        var input = document.getElementById('file-picker');
+
+        for (var i = 0; i < input.files.length; i++) {
+            var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
+
+            if (ext == 'csv') {
+                $("#msg").text("Файл готов к загрузке.")
+            } else {
+                $("#msg").text("Данный тип файла не поддерживается. Требуется .csv")
+            }
+
+        }
+    });
+
+</script>
 </html>

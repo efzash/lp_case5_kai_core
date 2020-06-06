@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+     <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background-color: #220f31;
+        }
+    </style>
 </head>
-<body>
-    <h1>Results:</h1>
+<body class="text-center">
+<div class="container">
+    <h1>Результат:</h1>
+    <p>Файл {{filename}} обработан.</p>
+    <p>Для загрузки результата нажмите на "Загрузить"</p>
+    <a href="../static/{{filename}}" download target="blank"><button class='btn btn-success'>Загрузить!</button></a>
+</div>
+
 </body>
 </html>
