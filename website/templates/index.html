@@ -26,36 +26,15 @@
         <h1 class="masthead-brand">Kazan AI core</h1>
     </header>
 
-    <p>Выберите csv файл для обработки!</p>
+    <p>Вставьте текст для обработки!</p>
 
-        <form class="" id="upload-form" action="{{ url_for('csv_upload') }}" method="POST"
-              enctype="multipart/form-data">
+        <form class="" id="upload-form" action="{{ url_for('csv_upload') }}" method="POST">
             <div class="form-group">
-                <input class="" id="file-picker"  type="file" name="file" multiple accept=".csv">
+                <input class="" id="file-picker"  type="text" name="text">
                 <input class="" type="submit" value="Загрузить!" id="upload-button">
             </div>
         </form>
-        <div id="msg"></div>
 
 </div>
 </body>
-<script>
-
-    $("#file-picker").change(function () {
-
-        var input = document.getElementById('file-picker');
-
-        for (var i = 0; i < input.files.length; i++) {
-            var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
-
-            if (ext == 'csv') {
-                $("#msg").text("Файл готов к загрузке.")
-            } else {
-                $("#msg").text("Данный тип файла не поддерживается. Требуется .csv")
-            }
-
-        }
-    });
-
-</script>
 </html>
