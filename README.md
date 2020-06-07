@@ -9,3 +9,5 @@ address_processing.ipynb - основной код нашего проекта. 
 
 Обработанные адреса записаны в файле result_Kazan Artificial Intelligence core.csv в столбце processed address. 
 !!! В АРХИВЕ result_Kazan Artificial Intelligence core.rar НАХОДИТСЯ result_Kazan Artificial Intelligence core.csv
+
+В папке result_without_ecran на всякий случай загружен result_Kazan Artificial Intelligence core.csv без экранов-кавычек (")
