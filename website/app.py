@@ -90,6 +90,11 @@ for table in tables:
 
 
 def OBRSTR(s):
+    s = line.strip("\n").split(';')[1]
+    s = re.sub(r"[')№\\(,.`<>«»~!@#$%;}{^&*?\"|+=_:]",' ', str(s))
+    s = s.lower()
+    s = s.split()
+    s = ' '.join(s)
     # обработка каждой строки
     tokens = tag(tokenizer(s))
     # генератор токенов
