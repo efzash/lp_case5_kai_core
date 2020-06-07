@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template, send_file
 import os
+import re
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 app = Flask(__name__)
@@ -90,7 +91,6 @@ for table in tables:
 
 
 def OBRSTR(s):
-    s = line.strip("\n").split(';')[1]
     s = re.sub(r"[')№\\(,.`<>«»~!@#$%;}{^&*?\"|+=_:]",' ', str(s))
     s = s.lower()
     s = s.split()
